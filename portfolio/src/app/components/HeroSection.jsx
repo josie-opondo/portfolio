@@ -1,8 +1,9 @@
 "use client";
 import React from 'react'
 import Image from 'next/image'
+import { FlipWords } from './ui/flip-words';
 
-import { TypeAnimation } from 'react-type-animation';
+const words = ["Josephine", "Web Developer", "Blockchain Developer"]
 
 const HeroSection = () => {
   return (
@@ -13,17 +14,8 @@ const HeroSection = () => {
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">Hello, I'm{""}
                     </span>
                     <br />
-                    <TypeAnimation
-      sequence={[
-        'Josephine',
-        1000, // wait 1s before replacing "Mice" with "Hamsters"
-        'Web Developer',
-        1000,
-        'Frontend Developer',
-        1000,
-        'Blockchain Developer',
-        1000
-      ]}
+                    <FlipWords
+      words={words}
       wrapper="span"
       speed={50}
       repeat={Infinity}
