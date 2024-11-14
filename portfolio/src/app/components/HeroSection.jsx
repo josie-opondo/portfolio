@@ -28,7 +28,7 @@ const HeroSection = () => {
     />
                 </h1>
                 <p className='text-[#ADB7BE] text-base  sm:text-lg mb-6 lg:text-xl'>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus omnis, optio provident, fugit aut nostrum eos rem ipsam voluptas neque nulla repellat deleniti facere magni ullam, nihil facilis minus beatae.
+                Passionate about building seamless digital experiences with a blend of creativity and code.
                 </p>
                 <div>
                 <Link
