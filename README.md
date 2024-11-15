@@ -1,3 +1,3 @@
-###PORTFOLIO
+PORTFOLIO
 
-This is the repository that will contain all my portfolios, each being built using different technologies
+This is the repository that will contain all my portfolios, each having been built using different technologies
