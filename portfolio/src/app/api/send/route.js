@@ -16,8 +16,8 @@ export async function POST(req, res) {
     // Looking to send emails in production? Check out our Email API/SMTP product!
     const transport = nodemailer.createTransport({
     auth: {
-      user: "josephineopondo5@gmail.com",
-      pass: "zdlmquesvtfjmrlc"
+      user: process.env.USER,
+      pass: process.env.PASS
     }
     });
 
