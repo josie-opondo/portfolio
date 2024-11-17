@@ -1,27 +1,40 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
-
+import nodemailer from 'nodemailer';
 export async function POST(req, res) {
-  const { email, subject, message } = await req.json();
-  console.log(email, subject, message);
-  try {
-    const data = await resend.emails.send({
-      from: fromEmail,
-      to: [fromEmail, email],
-      subject: subject,
-      react: (
-        <>
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try{
+
+    const { email, subject, message } = req.body();
+
+    if (!email || !subject || !message) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+    console.log(email, subject, message)
+    // Looking to send emails in production? Check out our Email API/SMTP product!
+    const transport = nodemailer.createTransport({
+    auth: {
+      user: "josephineopondo5@gmail.com",
+      pass: "zdlmquesvtfjmrlc"
+    }
+    });
+
+    const data = await transport.sendMail({
+      from: `josephineopondo5@gmail.com>`,
+      to: email,
+      subject,
+      text: message,
+      html: `
           <h1>{subject}</h1>
           <p>Thank you for contacting us!</p>
           <p>New message submitted:</p>
-          <p>{message}</p>
-        </>
-      ),
+          <p>{message}</p>`
+      ,
     });
-    return NextResponse.json(data);
+
+    return NextResponse.json(data)
   } catch (error) {
     return NextResponse.json({ error });
   }
